@@ -1,0 +1,1367 @@
+/* =========================================
+   GLOBAL
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+
+    background: #f4f7fb;
+
+    color: #222;
+}
+
+a {
+    text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+
+/* =========================================
+   DASHBOARD
+========================================= */
+
+.dashboard {
+    min-height: calc(100vh - 70px);
+
+    padding: 40px;
+
+    max-width: 1300px;
+
+    margin: 0 auto;
+}
+
+
+/* =========================================
+   DASHBOARD HEADER
+========================================= */
+
+.dashboard-header {
+    margin-bottom: 35px;
+}
+
+.dashboard-header h1 {
+    font-size: 32px;
+
+    color: #123b5d;
+
+    margin-bottom: 10px;
+}
+
+.dashboard-header p {
+    color: #6c757d;
+
+    font-size: 16px;
+}
+
+
+/* =========================================
+   DASHBOARD GRID
+========================================= */
+
+.dashboard-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+
+/* =========================================
+   DASHBOARD CARD
+========================================= */
+
+.dashboard-card {
+    background: #ffffff;
+
+    padding: 30px;
+
+    border-radius: 12px;
+
+    min-height: 230px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    justify-content: center;
+
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.07);
+
+    border: 1px solid #e9eef3;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+    cursor: pointer;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================================
+   CARD LINK
+========================================= */
+
+.dashboard-card-link {
+    color: inherit;
+
+    display: block;
+}
+
+
+/* =========================================
+   DASHBOARD ICON
+========================================= */
+
+.dashboard-icon {
+    width: 60px;
+
+    height: 60px;
+
+    border-radius: 12px;
+
+    background: #eaf4ff;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 30px;
+
+    margin-bottom: 18px;
+}
+
+
+/* =========================================
+   CARD TITLE
+========================================= */
+
+.dashboard-card h3 {
+    font-size: 22px;
+
+    color: #174a6e;
+
+    margin-bottom: 10px;
+}
+
+
+/* =========================================
+   CARD DESCRIPTION
+========================================= */
+
+.dashboard-card p {
+    color: #777;
+
+    font-size: 15px;
+
+    line-height: 1.6;
+
+    margin-bottom: 18px;
+}
+
+
+/* =========================================
+   CARD BUTTON
+========================================= */
+
+.card-button {
+    display: inline-block;
+
+    color: #1769aa;
+
+    font-size: 14px;
+
+    font-weight: bold;
+}
+
+.card-button:hover {
+    color: #0d4f82;
+}
+
+
+/* =========================================
+   COMING SOON
+========================================= */
+
+.coming-soon {
+    display: inline-block;
+
+    padding: 6px 12px;
+
+    border-radius: 20px;
+
+    background: #f1f3f5;
+
+    color: #777;
+
+    font-size: 13px;
+
+    font-weight: bold;
+}
+
+
+/* =========================================
+   PAGE CONTAINER
+========================================= */
+
+.page-container {
+    padding: 35px;
+
+    max-width: 1250px;
+
+    margin: 0 auto;
+}
+
+
+/* =========================================
+   PAGE HEADER
+========================================= */
+
+.page-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+.page-header h1 {
+    color: #123b5d;
+}
+
+
+/* =========================================
+   DATA GRID
+========================================= */
+
+.data-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+
+/* =========================================
+   DATA CARD
+========================================= */
+
+.data-card {
+    background: #ffffff;
+
+    padding: 22px;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.08);
+
+    border: 1px solid #e9eef3;
+}
+
+.data-card h3 {
+    margin-top: 0;
+
+    margin-bottom: 15px;
+
+    color: #1769aa;
+}
+
+.data-card p {
+    color: #555;
+
+    line-height: 1.6;
+
+    margin-bottom: 8px;
+}
+
+
+/* =========================================
+   EMPTY BOX
+========================================= */
+
+.empty-box {
+    background: white;
+
+    padding: 40px;
+
+    text-align: center;
+
+    border-radius: 10px;
+
+    color: #777;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+
+/* =========================================
+   FORM CARD
+========================================= */
+
+.form-card {
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 10px;
+
+    margin-bottom: 35px;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.form-card h2 {
+    margin-bottom: 20px;
+
+    color: #174a6e;
+}
+
+
+/* =========================================
+   APPOINTMENT FORM
+========================================= */
+
+.appointment-form {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 15px;
+}
+
+.appointment-form input,
+.appointment-form select,
+.appointment-form textarea {
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 6px;
+
+    font-size: 15px;
+
+    outline: none;
+}
+
+.appointment-form input:focus,
+.appointment-form select:focus,
+.appointment-form textarea:focus {
+    border-color: #1769aa;
+
+    box-shadow:
+        0 0 0 2px rgba(23, 105, 170, 0.1);
+}
+
+.appointment-form textarea {
+    grid-column: span 2;
+
+    resize: vertical;
+}
+
+.appointment-form button {
+    grid-column: span 2;
+
+    padding: 13px;
+
+    border: none;
+
+    background: #1769aa;
+
+    color: white;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    transition:
+        background 0.2s ease;
+}
+
+.appointment-form button:hover {
+    background: #0d4f82;
+}
+
+
+/* =========================================
+   APPOINTMENT SECTION
+========================================= */
+
+.appointment-section {
+    margin-top: 30px;
+}
+
+.appointment-section h2 {
+    margin-bottom: 20px;
+
+    color: #174a6e;
+}
+
+
+/* =========================================
+   STATUS
+========================================= */
+
+.status {
+    padding: 5px 10px;
+
+    border-radius: 15px;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    text-transform: capitalize;
+}
+
+.status.scheduled {
+    background: #fff3cd;
+
+    color: #856404;
+}
+
+.status.completed {
+    background: #d1e7dd;
+
+    color: #0f5132;
+}
+
+.status.cancelled {
+    background: #f8d7da;
+
+    color: #842029;
+}
+
+
+/* =========================================
+   ERROR
+========================================= */
+
+.error {
+    background: #f8d7da;
+
+    color: #842029;
+
+    padding: 12px 15px;
+
+    border-radius: 6px;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================================
+   SUCCESS
+========================================= */
+
+.success {
+    background: #d1e7dd;
+
+    color: #0f5132;
+
+    padding: 12px 15px;
+
+    border-radius: 6px;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================================
+   404
+========================================= */
+
+.not-found {
+    min-height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+.not-found h1 {
+    font-size: 80px;
+
+    color: #1769aa;
+}
+
+.not-found p {
+    color: #777;
+
+    font-size: 20px;
+}
+
+/* =========================================
+   MEDICINE FORM
+========================================= */
+
+.medicine-form {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 15px;
+}
+
+.medicine-form input,
+.medicine-form textarea {
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 6px;
+
+    outline: none;
+
+    font-size: 15px;
+}
+
+.medicine-form textarea {
+    grid-column: span 2;
+
+    resize: vertical;
+}
+
+.medicine-form input:focus,
+.medicine-form textarea:focus {
+    border-color: #1769aa;
+}
+
+.medicine-form button {
+    grid-column: span 2;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    background: #1769aa;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.medicine-form button:hover {
+    background: #0d4f82;
+}
+
+
+/* =========================================
+   MEDICINE SECTION
+========================================= */
+
+.medicine-section {
+    margin-top: 30px;
+}
+
+.medicine-section h2 {
+    margin-bottom: 20px;
+
+    color: #174a6e;
+}
+
+
+/* =========================================
+   MEDICINE ICON
+========================================= */
+
+.medicine-icon {
+    width: 55px;
+
+    height: 55px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #eaf4ff;
+
+    border-radius: 10px;
+
+    font-size: 27px;
+
+    margin-bottom: 15px;
+}
+
+
+/* =========================================
+   DELETE BUTTON
+========================================= */
+
+.delete-button {
+    margin-top: 15px;
+
+    padding: 9px 16px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    background: #dc3545;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+.delete-button:hover {
+    background: #bb2d3b;
+}
+
+/* =========================================
+   PRESCRIPTION FORM
+========================================= */
+
+.prescription-form {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 15px;
+}
+
+.prescription-form input,
+.prescription-form select,
+.prescription-form textarea {
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 6px;
+
+    outline: none;
+
+    font-size: 15px;
+
+    background: #fff;
+}
+
+.prescription-form input:focus,
+.prescription-form select:focus,
+.prescription-form textarea:focus {
+    border-color: #1769aa;
+}
+
+.prescription-form textarea {
+    grid-column: span 2;
+
+    resize: vertical;
+}
+
+.prescription-form button {
+    grid-column: span 2;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    background: #1769aa;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.prescription-form button:hover {
+    background: #0d4f82;
+}
+
+
+/* =========================================
+   PRESCRIPTION SECTION
+========================================= */
+
+.prescription-section {
+    margin-top: 30px;
+}
+
+.prescription-section h2 {
+    margin-bottom: 20px;
+
+    color: #174a6e;
+}
+
+
+/* =========================================
+   PRESCRIPTION ICON
+========================================= */
+
+.prescription-icon {
+    width: 55px;
+
+    height: 55px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #eaf4ff;
+
+    border-radius: 10px;
+
+    font-size: 27px;
+
+    margin-bottom: 15px;
+}
+
+/* =========================================
+   BILL FORM
+========================================= */
+
+.bill-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.bill-form input,
+.bill-form select {
+    width: 100%;
+    padding: 12px;
+
+    border: 1px solid #ddd;
+    border-radius: 6px;
+
+    outline: none;
+    font-size: 15px;
+
+    background: #fff;
+}
+
+.bill-form input:focus,
+.bill-form select:focus {
+    border-color: #1769aa;
+}
+
+.bill-form button {
+    grid-column: span 2;
+
+    padding: 13px;
+
+    border: none;
+    border-radius: 6px;
+
+    background: #1769aa;
+    color: white;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.bill-form button:hover {
+    background: #0d4f82;
+}
+
+
+/* =========================================
+   BILL SECTION
+========================================= */
+
+.bill-section {
+    margin-top: 30px;
+}
+
+.bill-section h2 {
+    margin-bottom: 20px;
+    color: #174a6e;
+}
+
+
+/* =========================================
+   BILL ICON
+========================================= */
+
+.bill-icon {
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #eaf4ff;
+
+    border-radius: 10px;
+
+    font-size: 27px;
+
+    margin-bottom: 15px;
+}
+
+
+/* =========================================
+   BILL STATUS
+========================================= */
+
+.status-paid {
+    color: #198754;
+    font-weight: bold;
+}
+
+.status-unpaid {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+/* =========================================
+   PROFILE
+========================================= */
+
+.profile-card {
+    max-width: 650px;
+    margin: 30px auto;
+    padding: 30px;
+
+    background: white;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.08);
+
+    text-align: center;
+}
+
+.profile-avatar {
+    width: 90px;
+    height: 90px;
+
+    margin: 0 auto 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #eaf4ff;
+
+    border-radius: 50%;
+
+    font-size: 42px;
+}
+
+.profile-card h2 {
+    margin-bottom: 25px;
+
+    color: #174a6e;
+}
+
+.profile-info {
+    text-align: left;
+
+    border-top: 1px solid #eee;
+}
+
+.profile-row {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 15px 5px;
+
+    border-bottom: 1px solid #eee;
+}
+
+.profile-row strong {
+    color: #555;
+}
+
+.profile-row span {
+    color: #222;
+}
+
+@media (max-width: 600px) {
+
+    .profile-card {
+        margin: 20px 10px;
+        padding: 20px;
+    }
+
+    .profile-row {
+        flex-direction: column;
+        gap: 5px;
+    }
+}
+/* =========================================
+   NAVBAR
+========================================= */
+
+.navbar {
+    width: 100%;
+
+    min-height: 70px;
+
+    padding: 0 30px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    background: #1769aa;
+
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.12);
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+}
+
+
+/* =========================================
+   BRAND
+========================================= */
+
+.navbar-brand a {
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   NAVIGATION LINKS
+========================================= */
+
+.navbar-links {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    flex-wrap: wrap;
+}
+
+.navbar-links a {
+    color: white;
+
+    text-decoration: none;
+
+    padding: 9px 10px;
+
+    border-radius: 5px;
+
+    font-size: 14px;
+
+    transition: 0.2s;
+}
+
+.navbar-links a:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+
+/* =========================================
+   LOGOUT
+========================================= */
+
+.logout-button {
+    padding: 9px 14px;
+
+    border: 1px solid rgba(255, 255, 255, 0.5);
+
+    border-radius: 5px;
+
+    background: transparent;
+
+    color: white;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.logout-button:hover {
+    background: white;
+
+    color: #1769aa;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 900px) {
+
+    .navbar {
+        padding: 15px;
+
+        flex-direction: column;
+
+        gap: 15px;
+    }
+
+    .navbar-links {
+        justify-content: center;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .navbar-brand a {
+        font-size: 18px;
+    }
+
+    .navbar-links {
+        gap: 4px;
+    }
+
+    .navbar-links a,
+    .logout-button {
+        font-size: 13px;
+
+        padding: 7px 8px;
+    }
+
+}
+/* =========================================
+   SEARCH & FILTER
+========================================= */
+
+.filter-card {
+    display: grid;
+
+    grid-template-columns:
+        2fr
+        1fr
+        auto;
+
+    gap: 12px;
+
+    padding: 20px;
+
+    margin-bottom: 20px;
+
+    background: white;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+.filter-card input,
+.filter-card select {
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 6px;
+
+    outline: none;
+
+    font-size: 15px;
+}
+
+.filter-card input:focus,
+.filter-card select:focus {
+    border-color: #1769aa;
+}
+
+.filter-card button {
+    padding: 12px 20px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    background: #1769aa;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+.filter-card button:hover {
+    background: #0d4f82;
+}
+
+
+/* =========================================
+   RESULT COUNT
+========================================= */
+
+.result-count {
+    margin-bottom: 20px;
+
+    color: #666;
+}
+
+
+/* =========================================
+   DOCTOR ICON
+========================================= */
+
+.doctor-icon {
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #eaf4ff;
+
+    border-radius: 10px;
+
+    font-size: 28px;
+
+    margin-bottom: 15px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .filter-card {
+        grid-template-columns: 1fr;
+    }
+
+    .filter-card button {
+        width: 100%;
+    }
+
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .bill-form {
+        grid-template-columns: 1fr;
+    }
+
+    .bill-form button {
+        grid-column: span 1;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .prescription-form {
+        grid-template-columns: 1fr;
+    }
+
+    .prescription-form textarea,
+    .prescription-form button {
+        grid-column: span 1;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .medicine-form {
+        grid-template-columns: 1fr;
+    }
+
+    .medicine-form textarea,
+    .medicine-form button {
+        grid-column: span 1;
+    }
+
+}
+
+
+/* =========================================
+   RESPONSIVE TABLET
+========================================= */
+
+@media (max-width: 1000px) {
+
+    .dashboard-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .data-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+/* =========================================
+   RESPONSIVE MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .dashboard {
+        padding: 20px;
+    }
+
+    .dashboard-header h1 {
+        font-size: 25px;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+    }
+
+    .dashboard-card {
+        min-height: 200px;
+
+        padding: 25px;
+    }
+
+    .page-container {
+        padding: 20px;
+    }
+
+    .data-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .appointment-form {
+        grid-template-columns: 1fr;
+    }
+
+    .appointment-form textarea,
+    .appointment-form button {
+        grid-column: span 1;
+    }
+
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 400px) {
+
+    .dashboard {
+        padding: 15px;
+    }
+
+    .dashboard-header h1 {
+        font-size: 22px;
+    }
+
+    .dashboard-card {
+        padding: 20px;
+    }
+
+    .dashboard-icon {
+        width: 50px;
+
+        height: 50px;
+
+        font-size: 25px;
+    }
+
+    .dashboard-card h3 {
+        font-size: 19px;
+    }
+
+}
