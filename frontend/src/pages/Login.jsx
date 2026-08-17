@@ -1,27 +1,34 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import API from "../api/axios";
+
+import api from "../api/axios";
+import "./login.css";
+
 
 function Login() {
 
     const navigate = useNavigate();
 
-    const [formData, setFormData] = useState({
-        username: "",
-        password: "",
-    });
 
-    const [error, setError] = useState("");
-    const [loading, setLoading] = useState(false);
+    const [username, setUsername] =
+        useState("");
 
-    const handleChange = (e) => {
 
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value,
-        });
+    const [password, setPassword] =
+        useState("");
 
-    };
+
+    const [error, setError] =
+        useState("");
+
+
+    const [loading, setLoading] =
+        useState(false);
+
+
+    // =========================================
+    // LOGIN
+    // =========================================
 
     const handleSubmit = async (e) => {
 
@@ -30,30 +37,170 @@ function Login() {
         setError("");
         setLoading(true);
 
+
         try {
 
-            const response = await API.post(
-                "token/",
-                formData
+            // =================================
+            // LOGIN API
+            // =================================
+
+            const response =
+                await api.post(
+                    "/login/",
+                    {
+                        username,
+                        password,
+                    }
+                );
+
+
+            console.log(
+                "Login response:",
+                response.data
             );
+
+
+            // =================================
+            // GET ACCESS TOKEN
+            // =================================
+
+            const accessToken =
+                response.data.access;
+
+
+            const refreshToken =
+                response.data.refresh;
+
+
+            if (!accessToken) {
+
+                throw new Error(
+                    "Access token was not received."
+                );
+
+            }
+
+
+            // =================================
+            // SAVE ACCESS TOKEN
+            // =================================
 
             localStorage.setItem(
                 "access_token",
-                response.data.access
+                accessToken
             );
 
-            localStorage.setItem(
-                "refresh_token",
-                response.data.refresh
+
+            // =================================
+            // SAVE REFRESH TOKEN
+            // =================================
+
+            if (refreshToken) {
+
+                localStorage.setItem(
+                    "refresh_token",
+                    refreshToken
+                );
+
+            }
+
+
+            // =================================
+            // SAVE USER
+            // =================================
+
+            if (response.data.user) {
+
+                localStorage.setItem(
+                    "user",
+                    JSON.stringify(
+                        response.data.user
+                    )
+                );
+
+            }
+
+
+            // =================================
+            // SET AXIOS TOKEN
+            // =================================
+
+            api.defaults.headers.common[
+                "Authorization"
+            ] =
+                `Bearer ${accessToken}`;
+
+
+            console.log(
+                "Access token saved successfully."
             );
 
-            navigate("/dashboard");
 
-        } catch (error) {
+            // =================================
+            // GO TO DASHBOARD
+            // =================================
 
-            setError(
-                "Username অথবা password ভুল!"
+            navigate(
+                "/dashboard",
+                {
+                    replace: true
+                }
             );
+
+
+        } catch (err) {
+
+            console.error(
+                "Login error:",
+                err
+            );
+
+
+            // =================================
+            // BACKEND ERROR
+            // =================================
+
+            if (
+                err.response &&
+                err.response.data
+            ) {
+
+                console.error(
+                    "Backend response:",
+                    err.response.data
+                );
+
+            }
+
+
+            // =================================
+            // ERROR MESSAGE
+            // =================================
+
+            if (
+                err.response?.status === 401
+            ) {
+
+                setError(
+                    "Invalid username or password."
+                );
+
+            } else if (
+                err.response?.status === 400
+            ) {
+
+                setError(
+                    "Please enter a valid username and password."
+                );
+
+            } else {
+
+                setError(
+                    "Login failed. Please try again."
+                );
+
+            }
+
 
         } finally {
 
@@ -62,62 +209,111 @@ function Login() {
         }
     };
 
+
+    // =========================================
+    // UI
+    // =========================================
+
     return (
-        <div className="auth-container">
 
-            <div className="auth-card">
+        <div className="login-page">
 
-                <h2>Hospital Management System</h2>
+            <div className="login-card">
 
-                <h3>Login</h3>
+
+                {/* =================================
+                    TITLE
+                ================================= */}
+
+                <h1>
+                    Hospital Management
+                </h1>
+
+
+                <p>
+                    Login to your account
+                </p>
+
+
+                {/* =================================
+                    ERROR
+                ================================= */}
 
                 {error && (
-                    <p className="error">
+
+                    <div className="error">
+
                         {error}
-                    </p>
+
+                    </div>
+
                 )}
 
-                <form onSubmit={handleSubmit}>
+
+                {/* =================================
+                    LOGIN FORM
+                ================================= */}
+
+                <form
+                    onSubmit={handleSubmit}
+                >
+
+
+                    {/* USERNAME */}
 
                     <input
                         type="text"
-                        name="username"
                         placeholder="Username"
-                        value={formData.username}
-                        onChange={handleChange}
+                        value={username}
+                        onChange={(e) =>
+                            setUsername(
+                                e.target.value
+                            )
+                        }
+                        disabled={loading}
                         required
                     />
 
+
+                    {/* PASSWORD */}
+
                     <input
                         type="password"
-                        name="password"
                         placeholder="Password"
-                        value={formData.password}
-                        onChange={handleChange}
+                        value={password}
+                        onChange={(e) =>
+                            setPassword(
+                                e.target.value
+                            )
+                        }
+                        disabled={loading}
                         required
                     />
+
+
+                    {/* LOGIN BUTTON */}
 
                     <button
                         type="submit"
                         disabled={loading}
                     >
-                        {loading ? "Logging in..." : "Login"}
+
+                        {loading
+                            ? "Logging in..."
+                            : "Login"}
+
                     </button>
+
 
                 </form>
 
-                <p>
-                    Don't have an account?
-                    {" "}
-                    <a href="/register">
-                        Register
-                    </a>
-                </p>
 
             </div>
 
         </div>
+
     );
 }
+
 
 export default Login;

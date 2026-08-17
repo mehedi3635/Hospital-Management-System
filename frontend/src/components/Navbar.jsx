@@ -1,67 +1,187 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 
 function Navbar() {
+
     const navigate = useNavigate();
 
-    const handleLogout = () => {
-        localStorage.removeItem("access");
-        localStorage.removeItem("refresh");
 
-        navigate("/login");
+    // =========================================
+    // GET USER
+    // =========================================
+
+    const userData =
+        localStorage.getItem("user");
+
+
+    const user = userData
+        ? JSON.parse(userData)
+        : null;
+
+
+    // =========================================
+    // LOGOUT
+    // =========================================
+
+    const handleLogout = () => {
+
+        localStorage.removeItem(
+            "access_token"
+        );
+
+        localStorage.removeItem(
+            "refresh_token"
+        );
+
+        localStorage.removeItem(
+            "user"
+        );
+
+
+        // Go to login page
+
+        navigate(
+            "/login",
+            {
+                replace: true
+            }
+        );
     };
 
+
+    // =========================================
+    // DASHBOARD
+    // =========================================
+
+    const goDashboard = () => {
+
+        navigate("/dashboard");
+
+    };
+
+
+    // =========================================
+    // NAVBAR
+    // =========================================
+
     return (
+
         <nav className="navbar">
 
-            {/* Logo / Brand */}
+            {/* BRAND */}
 
-            <div className="navbar-brand">
+            <div
+                className="navbar-brand"
+                onClick={goDashboard}
+            >
 
-                <Link to="/dashboard">
-                    🏥 Hospital Management
-                </Link>
+                <h2>
+                    Hospital Management
+                </h2>
 
             </div>
 
 
-            {/* Navigation Links */}
+            {/* NAVIGATION */}
 
-            <div className="navbar-links">
-
-                <Link to="/dashboard">
-                    Dashboard
-                </Link>
-
-                <Link to="/doctors">
-                    Doctors
-                </Link>
-
-                <Link to="/patients">
-                    Patients
-                </Link>
-
-                <Link to="/appointments">
-                    Appointments
-                </Link>
-
-                <Link to="/medicines">
-                    Medicines
-                </Link>
-
-                <Link to="/prescriptions">
-                    Prescriptions
-                </Link>
-
-                <Link to="/bills">
-                    Bills
-                </Link>
-
-                <Link to="/profile">
-                    Profile
-                </Link>
+            <div className="navbar-menu">
 
                 <button
-                    className="logout-button"
+                    type="button"
+                    onClick={goDashboard}
+                >
+                    Dashboard
+                </button>
+
+
+                <button
+                    type="button"
+                    onClick={() =>
+                        navigate("/doctors")
+                    }
+                >
+                    Doctors
+                </button>
+
+
+                <button
+                    type="button"
+                    onClick={() =>
+                        navigate("/patients")
+                    }
+                >
+                    Patients
+                </button>
+
+
+                <button
+                    type="button"
+                    onClick={() =>
+                        navigate("/appointments")
+                    }
+                >
+                    Appointments
+                </button>
+
+
+                <button
+                    type="button"
+                    onClick={() =>
+                        navigate("/prescriptions")
+                    }
+                >
+                    Prescriptions
+                </button>
+
+
+                <button
+                    type="button"
+                    onClick={() =>
+                        navigate("/medicines")
+                    }
+                >
+                    Medicines
+                </button>
+
+
+                <button
+                    type="button"
+                    onClick={() =>
+                        navigate("/bills")
+                    }
+                >
+                    Bills
+                </button>
+
+            </div>
+
+
+            {/* USER AREA */}
+
+            <div className="navbar-user">
+
+                {user && (
+
+                    <div className="user-info">
+
+                        <strong>
+                            {user.first_name ||
+                                user.username}
+                        </strong>
+
+
+                        <span>
+                            {user.role}
+                        </span>
+
+                    </div>
+
+                )}
+
+
+                <button
+                    type="button"
+                    className="logout-btn"
                     onClick={handleLogout}
                 >
                     Logout
@@ -70,7 +190,9 @@ function Navbar() {
             </div>
 
         </nav>
+
     );
 }
+
 
 export default Navbar;

@@ -1,4 +1,31 @@
 from django.utils import timezone
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView
+)
+from .serializers import (
+    MyTokenObtainPairSerializer,
+)
+
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView
+)
+
+
+class MyTokenObtainPairView(
+    TokenObtainPairView
+):
+
+    serializer_class = (
+        MyTokenObtainPairSerializer
+    )
+
+class MyTokenObtainPairView(
+    TokenObtainPairView
+):
+
+    serializer_class = (
+        MyTokenObtainPairSerializer
+    )
 
 from rest_framework import (
     generics,

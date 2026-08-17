@@ -2,165 +2,262 @@ import {
     BrowserRouter,
     Routes,
     Route,
+    Navigate
 } from "react-router-dom";
 
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import Dashboard from "./pages/Dashboard";
 import Doctors from "./pages/Doctors";
-import Patients from "./pages/Patients";
-import Appointments from "./pages/Appointments";
+
+
+import Login from "./pages/Login";
+
+import Dashboard from "./pages/Dashboard";
+
 
 import ProtectedRoute from "./components/ProtectedRoute";
-import Medicines from "./pages/Medicines";
-import Prescriptions from "./pages/Prescriptions";
-import Bills from "./pages/Bills";
-import Profile from "./pages/Profile";
+
+import Navbar from "./components/Navbar";
+
 
 import "./App.css";
 
 
+// =========================================
+// PROTECTED LAYOUT
+// =========================================
+
+function ProtectedLayout({ children }) {
+
+    return (
+
+        <ProtectedRoute>
+
+            <Navbar />
+
+            <main className="main-content">
+
+                {children}
+
+            </main>
+
+        </ProtectedRoute>
+
+    );
+}
+
+
+// =========================================
+// APP
+// =========================================
+
 function App() {
 
     return (
+
         <BrowserRouter>
 
             <Routes>
 
-                {/* =========================
+
+                {/* =================================
                     LOGIN
-                ========================== */}
+                ================================= */}
 
                 <Route
-                    path="/"
-                    element={<Login />}
+                    path="/login"
+                    element={
+                        <Login />
+                    }
                 />
 
 
-                {/* =========================
-                    REGISTER
-                ========================== */}
-
-                <Route
-                    path="/register"
-                    element={<Register />}
-                />
-
-
-                {/* =========================
+                {/* =================================
                     DASHBOARD
-                ========================== */}
+                ================================= */}
 
                 <Route
                     path="/dashboard"
                     element={
-                        <ProtectedRoute>
+                        <ProtectedLayout>
+
                             <Dashboard />
-                        </ProtectedRoute>
+
+                        </ProtectedLayout>
                     }
                 />
 
 
-                {/* =========================
+                {/* =================================
                     DOCTORS
-                ========================== */}
+                ================================= */}
 
                 <Route
-                    path="/doctors"
-                    element={
-                        <ProtectedRoute>
-                            <Doctors />
-                        </ProtectedRoute>
-                    }
-                />
+    path="/doctors"
+    element={
+        <ProtectedLayout>
+
+            <Doctors />
+
+        </ProtectedLayout>
+    }
+/>
 
 
-                {/* =========================
+                {/* =================================
                     PATIENTS
-                ========================== */}
+                ================================= */}
 
                 <Route
                     path="/patients"
                     element={
-                        <ProtectedRoute>
-                            <Patients />
-                        </ProtectedRoute>
+                        <ProtectedLayout>
+
+                            <div>
+                                <h1>
+                                    Patients
+                                </h1>
+
+                                <p>
+                                    Patients page coming soon.
+                                </p>
+                            </div>
+
+                        </ProtectedLayout>
                     }
                 />
 
 
-                {/* =========================
+                {/* =================================
                     APPOINTMENTS
-                ========================== */}
+                ================================= */}
 
                 <Route
                     path="/appointments"
                     element={
-                        <ProtectedRoute>
-                            <Appointments />
-                        </ProtectedRoute>
+                        <ProtectedLayout>
+
+                            <div>
+                                <h1>
+                                    Appointments
+                                </h1>
+
+                                <p>
+                                    Appointments page coming soon.
+                                </p>
+                            </div>
+
+                        </ProtectedLayout>
                     }
                 />
-                <Route
-    path="/prescriptions"
-    element={
-        <ProtectedRoute>
-            <Prescriptions />
-        </ProtectedRoute>
-    }
-/>
-<Route
-    path="/bills"
-    element={
-        <ProtectedRoute>
-            <Bills />
-        </ProtectedRoute>
-    }
-/>
-<Route
-    path="/profile"
-    element={
-        <ProtectedRoute>
-            <Profile />
-        </ProtectedRoute>
-    }
-/>
+
+
+                {/* =================================
+                    PRESCRIPTIONS
+                ================================= */}
 
                 <Route
-                  path="/medicines"
-                  element={
-                      <ProtectedRoute>
-                          <Medicines />
-                      </ProtectedRoute>
-                  }
-              />
+                    path="/prescriptions"
+                    element={
+                        <ProtectedLayout>
+
+                            <div>
+                                <h1>
+                                    Prescriptions
+                                </h1>
+
+                                <p>
+                                    Prescriptions page coming soon.
+                                </p>
+                            </div>
+
+                        </ProtectedLayout>
+                    }
+                />
 
 
-                {/* =========================
-                    404 PAGE
-                ========================== */}
+                {/* =================================
+                    MEDICINES
+                ================================= */}
+
+                <Route
+                    path="/medicines"
+                    element={
+                        <ProtectedLayout>
+
+                            <div>
+                                <h1>
+                                    Medicines
+                                </h1>
+
+                                <p>
+                                    Medicines page coming soon.
+                                </p>
+                            </div>
+
+                        </ProtectedLayout>
+                    }
+                />
+
+
+                {/* =================================
+                    BILLS
+                ================================= */}
+
+                <Route
+                    path="/bills"
+                    element={
+                        <ProtectedLayout>
+
+                            <div>
+                                <h1>
+                                    Bills
+                                </h1>
+
+                                <p>
+                                    Bills page coming soon.
+                                </p>
+                            </div>
+
+                        </ProtectedLayout>
+                    }
+                />
+
+
+                {/* =================================
+                    DEFAULT
+                ================================= */}
+
+                <Route
+                    path="/"
+                    element={
+                        <Navigate
+                            to="/dashboard"
+                            replace
+                        />
+                    }
+                />
+
+
+                {/* =================================
+                    404
+                ================================= */}
 
                 <Route
                     path="*"
                     element={
-                        <div className="not-found">
-
-                            <h1>
-                                404
-                            </h1>
-
-                            <p>
-                                Page Not Found
-                            </p>
-
-                        </div>
+                        <Navigate
+                            to="/dashboard"
+                            replace
+                        />
                     }
                 />
+
 
             </Routes>
 
         </BrowserRouter>
+
     );
 }
+
 
 export default App;
